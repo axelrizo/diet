@@ -36,4 +36,6 @@ defmodule DietWeb.ConnCase do
     Diet.DataCase.setup_sandbox(tags)
     {:ok, conn: Phoenix.ConnTest.build_conn()}
   end
+
+  def test_id(value), do: "[data-testid=#{value}]"
 end
