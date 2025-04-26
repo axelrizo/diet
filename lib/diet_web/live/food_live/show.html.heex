@@ -1,0 +1,26 @@
+<.header>
+  Food {@food.id}
+  <:subtitle>This is a food record from your database.</:subtitle>
+  <:actions>
+    <.link patch={~p"/food/#{@food}/show/edit"} phx-click={JS.push_focus()}>
+      <.button>Edit food</.button>
+    </.link>
+  </:actions>
+</.header>
+
+<.list>
+  <:item title="Name">{@food.name}</:item>
+</.list>
+
+<.back navigate={~p"/food"}>Back to food</.back>
+
+<.modal :if={@live_action == :edit} id="food-modal" show on_cancel={JS.patch(~p"/food/#{@food}")}>
+  <.live_component
+    module={DietWeb.FoodLive.FormComponent}
+    id={@food.id}
+    title={@page_title}
+    action={@live_action}
+    food={@food}
+    patch={~p"/food/#{@food}"}
+  />
+</.modal>
