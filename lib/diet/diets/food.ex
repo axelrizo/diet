@@ -4,14 +4,17 @@ defmodule Diet.Diets.Food do
 
   schema "food" do
     field :name, :string
+    field :carbohydrates, :integer
+    field :fats, :integer
+    field :proteins, :integer
 
-    timestamps(type: :utc_datetime_usec)
+    timestamps()
   end
 
   @doc false
   def changeset(food, attrs) do
     food
-    |> cast(attrs, [:name])
-    |> validate_required([:name])
+    |> cast(attrs, [:name, :carbohydrates, :fats, :proteins])
+    |> validate_required([:name, :carbohydrates, :fats, :proteins])
   end
 end
