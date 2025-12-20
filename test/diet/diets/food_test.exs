@@ -1,8 +1,8 @@
 defmodule Diet.Diets.FoodTest do
-  alias Ecto.Changeset
   use Diet.DataCase, async: true
 
   alias Diet.Diets.Food
+  alias Ecto.Changeset
 
   describe "changeset/2" do
     test "return food when valid attrs" do
