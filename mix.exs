@@ -65,13 +65,13 @@ defmodule Diet.MixProject do
       {:jason, "~> 1.2"},
       {:dns_cluster, "~> 0.1.1"},
       {:bandit, "~> 1.5"},
-      # TESTING_DEPS
+      # TESTING DEPS
       {:mix_test_interactive, "~> 4.3", only: :dev, runtime: false},
       {:ex_machina, "~> 2.8.0", only: :test},
       {:faker, "~> 0.18", only: :test},
       {:excoveralls, "~> 0.18", only: :test},
       {:phoenix_test, "~> 0.6.0", only: :test, runtime: false},
-      # ADVICES_DEPS
+      # FORMATTING AND LINTING DEPS
       {:credo, "~> 1.7", only: [:dev, :test], runtime: false},
       {:excellent_migrations, "~> 0.1", only: [:dev, :test], runtime: false},
       {:recode, "~> 0.7", only: [:dev, :test], runtime: false}
