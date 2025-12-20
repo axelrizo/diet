@@ -20,6 +20,9 @@ defmodule DietWeb.FoodLive.FormComponent do
         phx-submit="save"
       >
         <.input field={@form[:name]} type="text" label="Name" />
+        <.input field={@form[:carbohydrates]} type="text" label="Carbohydrates" />
+        <.input field={@form[:fats]} type="text" label="Fats" />
+        <.input field={@form[:proteins]} type="text" label="Proteins" />
         <:actions>
           <.button phx-disable-with="Saving...">Save Food</.button>
         </:actions>

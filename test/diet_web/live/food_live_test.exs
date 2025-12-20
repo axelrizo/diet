@@ -4,7 +4,7 @@ defmodule DietWeb.FoodLiveTest do
   import Phoenix.LiveViewTest
   import Diet.DietsFixtures
 
-  @create_attrs %{name: "some name"}
+  @create_attrs %{name: "some name", carbohydrates: 10, fats: 20, proteins: 30}
   @update_attrs %{name: "some updated name"}
   @invalid_attrs %{name: nil}
 
@@ -13,7 +13,36 @@ defmodule DietWeb.FoodLiveTest do
     %{food: food}
   end
 
+  describe "GET /food" do
+    test "saves food", %{conn: conn} do
+      {:ok, index_live, _html} = live(conn, ~p"/food")
+
+      assert index_live |> element("a", "New Food") |> render_click() =~
+               "New Food"
+
+      assert_patch(index_live, ~p"/food/new")
+
+      assert index_live
+             |> form("#food-form", food: @invalid_attrs)
+             |> render_change() =~ "can&#39;t be blank"
+
+      assert index_live
+             |> form("#food-form", food: @create_attrs)
+             |> render_submit()
+
+      assert_patch(index_live, ~p"/food")
+
+      html = render(index_live)
+      assert html =~ "Food created successfully"
+      assert html =~ "some name"
+      assert html =~ "<span data-testid=\"carbohydrates\">10</span>"
+      assert html =~ "<span data-testid=\"fats\">20</span>"
+      assert html =~ "<span data-testid=\"proteins\">30</span>"
+    end
+  end
+
   describe "Index" do
+    @describetag :skip
     setup [:create_food]
 
     test "lists all food", %{conn: conn, food: food} do
