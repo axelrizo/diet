@@ -1,5 +1,5 @@
 defmodule DietWeb.PageControllerTest do
-  use DietWeb.ConnCase
+  use DietWeb.ConnCase, async: true
 
   test "GET /", %{conn: conn} do
     conn
