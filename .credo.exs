@@ -35,7 +35,6 @@
           ~r"/_build/",
           ~r"/deps/",
           ~r"/node_modules/",
-          ~r"/nebot_v1/",
           ~r"/scripts/",
           ~r"/core_components.ex",
           ~r"/telemetry.ex"
