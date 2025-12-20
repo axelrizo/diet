@@ -25,6 +25,9 @@ defmodule DietWeb.FoodLive.New do
 
   @impl Phoenix.LiveView
   def handle_event("create", _params, socket) do
-    {:noreply, put_flash(socket, :info, ~s(Food "Orange" created successfully))}
+    {:noreply,
+     socket
+     |> put_flash(:info, ~s(Food "Orange" created successfully))
+     |> push_navigate(to: ~p"/foods")}
   end
 end
