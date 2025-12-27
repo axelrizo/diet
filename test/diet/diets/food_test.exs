@@ -20,7 +20,7 @@ defmodule Diet.Diets.FoodTest do
       @field field
 
       test "return invalid changeset when no #{@field}" do
-        attrs = %{name: "Banana", carbohydrates: 10, fats: 20, proteins: 30} |> Map.delete(@field)
+        attrs = params_for(:food, %{@field => nil})
 
         changeset = Food.changeset(%Food{}, attrs)
 
