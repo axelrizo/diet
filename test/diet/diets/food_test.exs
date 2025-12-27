@@ -6,14 +6,14 @@ defmodule Diet.Diets.FoodTest do
 
   describe "changeset/2" do
     test "return food when valid attrs" do
-      attrs = %{name: "Apple", carbohydrates: 10, fats: 20, proteins: 30}
+      attrs = params_for(:food)
 
       {:ok, food} = %Food{} |> Food.changeset(attrs) |> Changeset.apply_action(:validate)
 
       assert food.name == attrs.name
-      assert food.carbohydrates == attrs.carbohydrates
-      assert food.fats == attrs.fats
-      assert food.proteins == attrs.proteins
+      assert Decimal.equal?(food.carbohydrates, Decimal.from_float(attrs.carbohydrates))
+      assert Decimal.equal?(food.fats, Decimal.from_float(attrs.fats))
+      assert Decimal.equal?(food.proteins, Decimal.from_float(attrs.proteins))
     end
 
     for field <- [:carbohydrates, :fats, :proteins, :name] do
