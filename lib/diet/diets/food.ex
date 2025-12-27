@@ -1,12 +1,13 @@
 defmodule Diet.Diets.Food do
   use Ecto.Schema
+
   import Ecto.Changeset
 
   schema "food" do
     field :name, :string
-    field :carbohydrates, :integer
-    field :fats, :integer
-    field :proteins, :integer
+    field :carbohydrates, :decimal
+    field :fats, :decimal
+    field :proteins, :decimal
 
     timestamps()
   end
