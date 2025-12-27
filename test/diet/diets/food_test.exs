@@ -28,5 +28,18 @@ defmodule Diet.Diets.FoodTest do
         assert ["can't be blank"] = errors_on(changeset)[@field]
       end
     end
+
+    for field <- [:carbohydrates, :fats, :proteins] do
+      @field field
+
+      test "return invalid changeset when #{@field} is negative" do
+        attrs = params_for(:food, %{@field => -1})
+
+        changeset = Food.changeset(%Food{}, attrs)
+
+        assert changeset.valid? == false
+        assert ["must be greater than or equal to 0"] = errors_on(changeset)[@field]
+      end
+    end
   end
 end

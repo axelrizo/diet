@@ -17,5 +17,8 @@ defmodule Diet.Diets.Food do
     food
     |> cast(attrs, [:name, :carbohydrates, :fats, :proteins])
     |> validate_required([:name, :carbohydrates, :fats, :proteins])
+    |> validate_number(:carbohydrates, greater_than_or_equal_to: 0)
+    |> validate_number(:fats, greater_than_or_equal_to: 0)
+    |> validate_number(:proteins, greater_than_or_equal_to: 0)
   end
 end
