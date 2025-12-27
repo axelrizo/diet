@@ -5,7 +5,7 @@ defmodule Diet.Diets.FoodTest do
   alias Ecto.Changeset
 
   describe "changeset/2" do
-    test "return food when valid attrs" do
+    test "return food when valid attrs and validated" do
       attrs = params_for(:food)
 
       {:ok, food} = %Food{} |> Food.changeset(attrs) |> Changeset.apply_action(:validate)
