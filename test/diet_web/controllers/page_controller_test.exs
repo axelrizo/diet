@@ -4,7 +4,6 @@ defmodule DietWeb.PageControllerTest do
   test "GET /", %{conn: conn} do
     conn
     |> visit(~p"/")
-    |> open_browser()
     |> assert_has("h1", text: "Welcome to Diet")
   end
 end
