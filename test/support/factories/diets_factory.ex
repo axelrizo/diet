@@ -4,9 +4,9 @@ defmodule Diet.DietsFactory do
       def food_factory() do
         %Diet.Diets.Food{
           name: sequence("Food"),
-          proteins: sequence(:proteins, & &1, start_at: 10.0),
-          fats: sequence(:fats, & &1, start_at: 30.0),
-          carbohydrates: sequence(:carbohydrates, & &1, start_at: 50.0)
+          proteins: sequence(:proteins, &Decimal.new("#{&1}"), start_at: 10.0),
+          fats: sequence(:fats, &Decimal.new("#{&1}"), start_at: 30.0),
+          carbohydrates: sequence(:carbohydrates, &Decimal.new("#{&1}"), start_at: 50.0)
         }
       end
     end
