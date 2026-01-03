@@ -12,4 +12,14 @@ defmodule Diet.DietsTest do
       assert Repo.get_by(Food, name: attrs.name)
     end
   end
+
+  describe "list_foods/0" do
+    test "returns all foods" do
+      foods = insert_list(3, :food)
+
+      assert returned_foods = Diets.list_foods()
+      for food <- foods, do: %Food{} |> match?(food) |> assert()
+      assert length(returned_foods) == length(foods)
+    end
+  end
 end

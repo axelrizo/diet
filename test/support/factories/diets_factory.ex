@@ -1,7 +1,9 @@
 defmodule Diet.DietsFactory do
+  @moduledoc false
+
   defmacro __using__(_) do
     quote do
-      def food_factory() do
+      def food_factory do
         %Diet.Diets.Food{
           name: sequence("Food"),
           proteins: sequence(:proteins, &Decimal.new("#{&1}"), start_at: 10.0),

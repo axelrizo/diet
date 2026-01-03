@@ -1,4 +1,8 @@
 defmodule Diet.Diets.Food do
+  @moduledoc """
+  The Food schema.
+  """
+
   use Ecto.Schema
 
   import Ecto.Changeset

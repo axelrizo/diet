@@ -96,6 +96,15 @@ defmodule Diet.MixProject do
         "tailwind diet --minify",
         "esbuild diet --minify",
         "phx.digest"
+      ],
+      ci: [
+        "hex.audit",
+        "deps.unlock --check-unused",
+        "format --check-formatted",
+        "ecto.create --quiet",
+        "ecto.migrate --quiet",
+        "test",
+        "credo --strict"
       ]
     ]
   end
