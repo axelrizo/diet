@@ -5,7 +5,6 @@ defmodule DietWeb.FoodLive.New do
 
   use DietWeb, :live_view
 
-  # alias Diet.Diets.Food
   alias Diet.Diets.Food
   alias Diet.Diets
 
