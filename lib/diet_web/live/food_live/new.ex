@@ -5,8 +5,8 @@ defmodule DietWeb.FoodLive.New do
 
   use DietWeb, :live_view
 
-  alias Diet.Diets.Food
   alias Diet.Diets
+  alias Diet.Diets.Food
 
   @impl Phoenix.LiveView
   def render(assigns) do
