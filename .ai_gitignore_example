@@ -1,0 +1,6 @@
+# Add AI configuration files to .gitignore if they contain sensitive information
+# Currently these files contain general guidelines and can be committed
+
+# However, if you later add API keys or sensitive configs, uncomment these:
+# .ai_config.json
+# .ai_secrets.env
