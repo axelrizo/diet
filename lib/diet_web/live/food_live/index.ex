@@ -4,7 +4,7 @@ defmodule DietWeb.FoodLive.Index do
   alias Diet.Diets
 
   def mount(_params, _session, socket) do
-    {:ok, socket |> assign(:foods, Diets.list_foods())}
+    {:ok, assign(socket, :foods, Diets.list_foods())}
   end
 
   def render(assigns) do
