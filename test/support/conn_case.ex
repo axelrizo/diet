@@ -29,6 +29,7 @@ defmodule DietWeb.ConnCase do
       import Phoenix.ConnTest
       import DietWeb.ConnCase
       import PhoenixTest
+      import Diet.Factory
     end
   end
 
