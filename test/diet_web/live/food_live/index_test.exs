@@ -1,8 +1,6 @@
 defmodule DietWeb.FoodLive.IndexTest do
   use DietWeb.ConnCase, async: true
 
-  alias DietWeb.FoodLive.Index
-
   describe "GET /foods" do
     test "renders the food list", %{conn: conn} do
       foods = insert_list(2, :food)
