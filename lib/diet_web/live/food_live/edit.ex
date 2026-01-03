@@ -1,10 +1,10 @@
 defmodule DietWeb.FoodLive.Edit do
   use DietWeb, :live_view
 
-  alias Ecto.Changeset
   alias Diet.Diets
+  alias Ecto.Changeset
 
-  @impl true
+  @impl Phoenix.LiveView
   def mount(%{"id" => id}, _session, socket) do
     food = Diets.get_food!(id)
     changeset = Diets.change_food(food)
@@ -16,7 +16,7 @@ defmodule DietWeb.FoodLive.Edit do
      |> assign(:form, to_form(changeset))}
   end
 
-  @impl true
+  @impl Phoenix.LiveView
   def handle_event("validate", %{"food" => food_params}, socket) do
     changeset =
       socket.assigns.food
@@ -26,7 +26,7 @@ defmodule DietWeb.FoodLive.Edit do
     {:noreply, assign(socket, :form, to_form(changeset))}
   end
 
-  @impl true
+  @impl Phoenix.LiveView
   def handle_event("save", %{"food" => food_params}, socket) do
     case Diets.update_food(socket.assigns.food, food_params) do
       {:ok, _food} ->
@@ -40,7 +40,7 @@ defmodule DietWeb.FoodLive.Edit do
     end
   end
 
-  @impl true
+  @impl Phoenix.LiveView
   def render(assigns) do
     ~H"""
     <div>
