@@ -21,6 +21,7 @@ defmodule DietWeb.Router do
 
     live "/foods", FoodLive.Index, :index
     live "/foods/new", FoodLive.New, :new
+    live "/foods/:id/edit", FoodLive.Edit, :edit
   end
 
   # Other scopes may use custom stacks.
