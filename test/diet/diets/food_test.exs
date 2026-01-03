@@ -11,9 +11,9 @@ defmodule Diet.Diets.FoodTest do
       {:ok, food} = %Food{} |> Food.changeset(attrs) |> Changeset.apply_action(:validate)
 
       assert food.name == attrs.name
-      assert Decimal.equal?(food.carbohydrates, Decimal.from_float(attrs.carbohydrates))
-      assert Decimal.equal?(food.fats, Decimal.from_float(attrs.fats))
-      assert Decimal.equal?(food.proteins, Decimal.from_float(attrs.proteins))
+      assert Decimal.equal?(food.carbohydrates, attrs.carbohydrates)
+      assert Decimal.equal?(food.fats, attrs.fats)
+      assert Decimal.equal?(food.proteins, attrs.proteins)
     end
 
     for field <- [:carbohydrates, :fats, :proteins, :name] do
