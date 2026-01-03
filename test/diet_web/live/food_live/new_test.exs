@@ -21,5 +21,12 @@ defmodule DietWeb.FoodLive.NewTest do
       |> assert_has("#flash-info", text: ~s(Food "#{food_name}" created successfully))
       |> assert_path(~p"/foods")
     end
+
+    test "shows validation errors when submitting invalid data", %{conn: conn} do
+      conn
+      |> visit(~p"/foods/new")
+      |> click_button("Create Food")
+      |> assert_has(test_id("error"), text: "can't be blank")
+    end
   end
 end
