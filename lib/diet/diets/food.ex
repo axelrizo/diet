@@ -7,6 +7,16 @@ defmodule Diet.Diets.Food do
 
   import Ecto.Changeset
 
+  @type t :: %__MODULE__{
+          id: integer() | nil,
+          name: String.t(),
+          carbohydrates: Decimal.t(),
+          fats: Decimal.t(),
+          proteins: Decimal.t(),
+          inserted_at: NaiveDateTime.t() | nil,
+          updated_at: NaiveDateTime.t() | nil
+        }
+
   schema "food" do
     field :name, :string
     field :carbohydrates, :decimal
