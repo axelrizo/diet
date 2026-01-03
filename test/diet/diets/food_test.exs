@@ -1,31 +1,44 @@
 defmodule Diet.Diets.FoodTest do
-  alias Ecto.Changeset
   use Diet.DataCase, async: true
 
   alias Diet.Diets.Food
+  alias Ecto.Changeset
 
   describe "changeset/2" do
-    test "return food when valid attrs" do
-      attrs = %{name: "Apple", carbohydrates: 10, fats: 20, proteins: 30}
+    test "return food when valid attrs and validated" do
+      attrs = params_for(:food)
 
       {:ok, food} = %Food{} |> Food.changeset(attrs) |> Changeset.apply_action(:validate)
 
       assert food.name == attrs.name
-      assert food.carbohydrates == attrs.carbohydrates
-      assert food.fats == attrs.fats
-      assert food.proteins == attrs.proteins
+      assert Decimal.equal?(food.carbohydrates, attrs.carbohydrates)
+      assert Decimal.equal?(food.fats, attrs.fats)
+      assert Decimal.equal?(food.proteins, attrs.proteins)
     end
 
     for field <- [:carbohydrates, :fats, :proteins, :name] do
       @field field
 
       test "return invalid changeset when no #{@field}" do
-        attrs = %{name: "Banana", carbohydrates: 10, fats: 20, proteins: 30} |> Map.delete(@field)
+        attrs = params_for(:food, %{@field => nil})
 
         changeset = Food.changeset(%Food{}, attrs)
 
         assert changeset.valid? == false
         assert ["can't be blank"] = errors_on(changeset)[@field]
+      end
+    end
+
+    for field <- [:carbohydrates, :fats, :proteins] do
+      @field field
+
+      test "return invalid changeset when #{@field} is negative" do
+        attrs = params_for(:food, %{@field => -1})
+
+        changeset = Food.changeset(%Food{}, attrs)
+
+        assert changeset.valid? == false
+        assert ["must be greater than or equal to 0"] = errors_on(changeset)[@field]
       end
     end
   end

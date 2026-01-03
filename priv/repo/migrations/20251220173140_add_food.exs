@@ -4,9 +4,9 @@ defmodule Diet.Repo.Migrations.AddFood do
   def change do
     create table(:food) do
       add :name, :string, null: false
-      add :carbohydrates, :integer, null: false
-      add :fats, :integer, null: false
-      add :proteins, :integer, null: false
+      add :carbohydrates, :decimal, precision: 10, scale: 2, null: false
+      add :fats, :decimal, precision: 10, scale: 2, null: false
+      add :proteins, :decimal, precision: 10, scale: 2, null: false
 
       timestamps()
     end

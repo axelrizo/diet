@@ -37,5 +37,5 @@ defmodule DietWeb.ConnCase do
     {:ok, conn: Phoenix.ConnTest.build_conn()}
   end
 
-  def test_id(value), do: "[data-testid=#{value}]"
+  def test_id(value), do: "[data-test-id=#{value}]"
 end
