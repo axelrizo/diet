@@ -1,4 +1,8 @@
 defmodule Diet.Diets do
+  @moduledoc """
+  The Diets context.
+  """
+
   alias Diet.Diets.Food
   alias Diet.Repo
 

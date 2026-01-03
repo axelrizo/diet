@@ -1,4 +1,6 @@
 defmodule Diet.DietsFactory do
+  @moduledoc false
+
   defmacro __using__(_) do
     quote do
       def food_factory() do
