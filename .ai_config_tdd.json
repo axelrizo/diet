@@ -1,0 +1,219 @@
+{
+  "project": {
+    "name": "Diet Tracking Application",
+    "type": "phoenix_liveview",
+    "language": "elixir",
+    "framework": "phoenix",
+    "version": "1.7.21",
+    "development_approach": "TDD (Test-Driven Development)"
+  },
+  "tdd_workflow": {
+    "cycle": "Red-Green-Refactor",
+    "steps": {
+      "red": "Write failing test first",
+      "green": "Implement minimum code to pass test",
+      "refactor": "Improve code while keeping tests green"
+    },
+    "mandatory_rules": [
+      "NO_CODE_WITHOUT_TESTS",
+      "TEST_FIRST_ALWAYS",
+      "MINIMAL_IMPLEMENTATION",
+      "ONE_FAILING_TEST_AT_A_TIME",
+      "REFACTOR_CONTINUOUSLY"
+    ]
+  },
+  "testing_strategy": {
+    "coverage_minimum": "95%",
+    "test_pyramid": {
+      "unit_tests": "majority",
+      "integration_tests": "some",
+      "e2e_tests": "few"
+    },
+    "test_categories": {
+      "unit": [
+        "contexts",
+        "schemas",
+        "utilities"
+      ],
+      "integration": [
+        "liveview",
+        "controllers"
+      ],
+      "feature": [
+        "complete_user_workflows"
+      ]
+    },
+    "tools": {
+      "framework": "ExUnit",
+      "factories": "ExMachina",
+      "mocking": "Mox",
+      "coverage": "ExCoveralls",
+      "liveview_testing": "PhoenixTest"
+    }
+  },
+  "conventions": {
+    "code_style": {
+      "naming": {
+        "modules": "PascalCase",
+        "functions": "snake_case",
+        "variables": "snake_case",
+        "constants": "SCREAMING_SNAKE_CASE"
+      },
+      "formatting": {
+        "line_length": 98,
+        "pipe_operator": "prefer_pipes_for_data_transformation",
+        "pattern_matching": "prefer_over_conditionals"
+      }
+    },
+    "file_structure": {
+      "contexts": "lib/diet/",
+      "web_modules": "lib/diet_web/",
+      "liveviews": "lib/diet_web/live/",
+      "components": "lib/diet_web/components/",
+      "tests": "test/",
+      "test_naming": "mirror_lib_structure"
+    },
+    "test_organization": {
+      "describe_blocks": "group_related_tests",
+      "test_naming": "behavior_focused_not_implementation",
+      "setup": "use_proper_test_cases"
+    }
+  },
+  "tdd_liveview_rules": {
+    "state_testing": {
+      "socket_assigns": "test_initial_state_and_updates",
+      "event_handling": "test_all_event_outcomes",
+      "template_rendering": "test_rendered_output"
+    },
+    "event_patterns": {
+      "validation": "test_real_time_validation",
+      "submission": "test_success_and_error_paths",
+      "navigation": "test_push_patch_and_redirect"
+    },
+    "templates": {
+      "format": "heex",
+      "components": "prefer_function_components",
+      "validation": "use_attr_validation"
+    }
+  },
+  "tdd_database_rules": {
+    "schema_testing": {
+      "changesets": "test_valid_and_invalid_data",
+      "validations": "test_all_validation_rules",
+      "constraints": "test_database_constraints"
+    },
+    "context_testing": {
+      "crud_operations": "test_all_context_functions",
+      "edge_cases": "test_not_found_scenarios",
+      "associations": "test_preloading_and_relationships"
+    },
+    "migration_testing": {
+      "up_down": "test_migration_reversibility",
+      "constraints": "test_database_constraints"
+    },
+    "queries": {
+      "preference": "ecto_query_over_raw_sql",
+      "associations": "use_preloading",
+      "error_handling": "always_handle_database_errors"
+    }
+  },
+  "tdd_security_patterns": {
+    "input_validation": {
+      "test_malicious_input": true,
+      "test_boundary_conditions": true,
+      "test_sanitization": true
+    },
+    "authorization": {
+      "test_unauthorized_access": true,
+      "test_role_permissions": true,
+      "test_data_isolation": true
+    }
+  },
+  "tdd_performance_testing": {
+    "query_performance": "test_with_large_datasets",
+    "liveview_performance": "test_socket_memory_usage",
+    "response_times": "measure_critical_paths"
+  },
+  "common_tdd_patterns": {
+    "context_function_testing": {
+      "create": "test \"creates resource with valid data\"",
+      "update": "test \"updates resource with valid changes\"",
+      "delete": "test \"deletes resource successfully\"",
+      "get": "test \"returns resource when exists\""
+    },
+    "liveview_testing": {
+      "mount": "test \"assigns initial state correctly\"",
+      "events": "test \"handles event and updates socket\"",
+      "rendering": "test \"renders expected elements\""
+    },
+    "changeset_testing": {
+      "valid_data": "test \"returns valid changeset when good data\"",
+      "invalid_data": "test \"returns invalid changeset when bad data\"",
+      "edge_cases": "test \"handles boundary when conditions\""
+    }
+  },
+  "tdd_anti_patterns": [
+    "writing_code_before_tests",
+    "multiple_failing_tests_at_once",
+    "testing_implementation_details",
+    "ignoring_refactor_phase",
+    "testing_framework_code",
+    "overly_complex_test_setup"
+  ],
+  "test_data_strategy": {
+    "factories": "use_ex_machina_for_test_data",
+    "independence": "each_test_should_be_isolated",
+    "realistic": "use_realistic_test_data",
+    "minimal": "create_minimum_data_needed"
+  },
+  "error_handling_tdd": {
+    "test_error_scenarios": "test_all_failure_paths",
+    "test_error_recovery": "test_graceful_degradation",
+    "test_edge_cases": "test_boundary_conditions"
+  },
+  "documentation_through_tests": {
+    "tests_as_docs": "tests_should_show_usage_examples",
+    "readable_names": "test_names_should_read_like_specs",
+    "clear_assertions": "assertions_should_be_explicit"
+  },
+  "specific_tdd_rules": {
+    "food_management": {
+      "test_nutrition_validation": "test_proper_nutritional_validation",
+      "test_data_types": "test_decimal_for_nutrition_values",
+      "test_error_handling": "test_proper_food_operation_errors"
+    },
+    "forms": {
+      "test_validation_feedback": "test_real_time_feedback",
+      "test_form_helpers": "test_phoenix_form_helpers",
+      "test_real_time_validation": "test_immediate_validation"
+    },
+    "navigation": {
+      "test_liveview_navigation": "test_push_patch_redirect",
+      "test_breadcrumbs": "test_proper_navigation",
+      "test_back_button": "test_functionality"
+    }
+  },
+  "tools_and_dependencies": {
+    "required": [
+      "phoenix",
+      "phoenix_live_view",
+      "ecto_sql",
+      "postgrex",
+      "phoenix_html",
+      "tailwind"
+    ],
+    "testing": [
+      "ex_unit",
+      "ex_machina",
+      "phoenix_test",
+      "floki",
+      "mox",
+      "excoveralls"
+    ],
+    "development": [
+      "phoenix_live_reload",
+      "phoenix_live_dashboard",
+      "credo"
+    ]
+  }
+}
